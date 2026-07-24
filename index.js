@@ -51,6 +51,7 @@ const commands = {
     getbio: require('./commands/getbio'),
     getdp: require('./commands/getdp'),
     accept: require('./commands/accept'),
+    welcome: require('./commands/welcome').welcomeCommand,
 
     // Admin/Owner
     private: require('./commands/private'),
@@ -79,6 +80,7 @@ const commands = {
 
     // AI
     ai: require('./commands/ai'),
+    deepseek: require('./commands/deepseek'),
 
     // Fun
     joke: require('./commands/joke'),
@@ -98,6 +100,24 @@ const commands = {
     roll: require('./commands/roll'),
     riddle: require('./commands/riddle'),
     wouldyourather: require('./commands/wouldyourather'),
+    neon: require('./commands/logo-maker'),
+    glitch: require('./commands/logo-maker'),
+    gold: require('./commands/logo-maker'),
+    '3dtext': require('./commands/logo-maker'),
+    fire: require('./commands/logo-maker'),
+    water: require('./commands/logo-maker'),
+    galaxy: require('./commands/logo-maker'),
+    marvel: require('./commands/logo-maker'),
+    avengers: require('./commands/logo-maker'),
+    transformer: require('./commands/logo-maker'),
+    blackpink: require('./commands/logo-maker'),
+    gradient: require('./commands/logo-maker'),
+    luxury: require('./commands/logo-maker'),
+    royal: require('./commands/logo-maker'),
+    metal: require('./commands/logo-maker'),
+    steel: require('./commands/logo-maker'),
+    chrome: require('./commands/logo-maker'),
+    glossy: require('./commands/logo-maker'),
 
     // Tools
     ping: require('./commands/ping'),
@@ -988,6 +1008,7 @@ class BotSession {
                                         case 'tagall': await commands.tagall(this.sock, from, msg, isAdmin, q); break;
                                         case 'groupinfo': case 'ginfo': await commands.groupinfo(this.sock, from, msg); break;
                                         case 'accept': await commands.accept(this.sock, from, msg, isAdmin); break;
+                                        case 'welcome': await commands.welcome(this.sock, from, msg, isAdmin, args); break;
                                         case 'poll': await commands.poll(this.sock, from, msg, q); break;
                                         case 'everyonemsg': await commands.everyonemsg(this.sock, from, msg, isAdmin, q); break;
                                         case 'listonline': await commands.listonline(this.sock, from, msg); break;
@@ -1032,6 +1053,7 @@ class BotSession {
 
                                         // ===== AI =====
                                         case 'ai': await commands.ai(this.sock, from, msg, isAdmin, this, args); break;
+                                        case 'deepseek': await commands.deepseek(this.sock, from, msg, args); break;
                                         case 'chatbot': await commands.chatbot(this.sock, from, msg, this, args); break;
                                         case 'gali': await commands.gali(this.sock, from, msg, this, args); break;
 
@@ -1053,6 +1075,8 @@ class BotSession {
                                         case 'roll': await commands.roll(this.sock, from, msg, q); break;
                                         case 'riddle': await commands.riddle(this.sock, from, msg); break;
                                         case 'wyr': case 'wouldyourather': await commands.wouldyourather(this.sock, from, msg); break;
+                                        case 'neon': case 'glitch': case 'gold': case '3dtext': case 'fire': case 'water': case 'galaxy': case 'marvel': case 'avengers': case 'transformer': case 'blackpink': case 'gradient': case 'luxury': case 'royal': case 'metal': case 'steel': case 'chrome': case 'glossy':
+                                            await commands.neon(this.sock, from, msg, commandName, q); break;
 
                                         // ===== TOOLS =====
                                         case 'ping': await commands.utils.ping(this.sock, from, msg); break;
